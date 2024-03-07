@@ -27,7 +27,7 @@
 					<h2>Application Form</h2>
 					<p>Fill out the form below for Internship opportunities</p>
 				</div>
-				<form action="-------------------------------------------------" method="post">
+				<form action="./success" method="post">
 					<div class="inputs-w3ls email-wthree">
 						<p>Full name</p>
 						<i class="fa fa-user" aria-hidden="true"></i>
@@ -42,37 +42,37 @@
 					<div class="inputs-w3ls">
 						<p>What position are you applying for</p>
 						<i class="fa fa-sitemap" aria-hidden="true"></i>
-						<select class="form-control">
+						<select class="form-control" name="tech">
 							<option></option>
-							<option>Assistant Manager</option>
-							<option>Chief Executive Officer</option>
-							<option>Chief Operating Officer </option>
-							<option>Chief Financial Officer </option>
-							<option>Secretary.</option>
-							<option>Others</option>
+							<option value="backend">backend (java/js)</option>
+							<option value="ds">Data Science</option>
+							<option value="ml">Machine Learning</option>
+							<option value="And">Android/IOS dev.</option>
+							<option value="FS">Full Stack dev.</option>
+							<option value="oth">Others</option>
 						</select>
 					</div>
 					<div class="inputs-w3ls">
-						<p>Specify your current employment status</p>
+						<p>Specify your current College year</p>
 						<ul>
 							<li>
 								<input type="radio" id="a-option" name="selector1">
-								<label for="a-option">Employed </label>
+								<label for="a-option">1st year</label>
 								<div class="check"></div>
 							</li>
 							<li>
-								<input type="radio" id="b-option" name="selector1">
-								<label for="b-option">Unemployed</label>
+								<input type="radio" id="b-option" name="selector2">
+								<label for="b-option">2nd year</label>
 								<div class="check"></div>
 							</li>
 							<li>
-								<input type="radio" id="c-option" name="selector1">
-								<label for="c-option">Self-Employed</label>
+								<input type="radio" id="c-option" name="selector3">
+								<label for="c-option">3rd year</label>
 								<div class="check"></div>
 							</li>
 							<li>
-								<input type="radio" id="d-option" name="selector1">
-								<label for="d-option">Student</label>
+								<input type="radio" id="d-option" name="selector4">
+								<label for="d-option">4th year</label>
 								<div class="check"></div>
 							</li>
 						</ul>
@@ -80,7 +80,7 @@
 					</div>
 					<div class="inputs-w3ls upload-wthree">
 						<p>Upload your resume</p>
-						<input type="file" id="fileselect" name="fileselect[]" multiple="multiple">
+						<input type="file" id="fileselect" name="fileselect" multiple="multiple">
 						<div id="filedrag">Upload</div>
 					</div>
 					<input type="submit" value="Submit">
