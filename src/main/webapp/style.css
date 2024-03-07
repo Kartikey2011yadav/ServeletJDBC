@@ -247,7 +247,8 @@ img {
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 100%;
-	background: #212020;
+
+	background-image: linear-gradient(135deg, #FF8D47 10%, #1904E5 100%);
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -259,7 +260,6 @@ body {
 
 .center-container {
 	padding: 1em 0 1em;
-	background: rgba(9, 0, 255, 0.42);
 }
 
 h1,
