@@ -14,6 +14,12 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>6.1.0-M2</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>ServeletJDBC</finalName>
