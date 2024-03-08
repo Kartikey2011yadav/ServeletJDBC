@@ -27,7 +27,7 @@
 					<h2>Application Form</h2>
 					<p>Fill out the form below for Internship opportunities</p>
 				</div>
-				<form action="./success" method="post">
+				<form action="./success" method="post" enctype="multipart/form-data">
 					<div class="inputs-w3ls email-wthree">
 						<p>Full name</p>
 						<i class="fa fa-user" aria-hidden="true"></i>
@@ -80,7 +80,7 @@
 					</div>
 					<div class="inputs-w3ls upload-wthree">
 						<p>Upload your resume</p>
-						<input type="file" id="fileselect" name="fileselect" multiple="multiple">
+						<input type="file" id="fileselect[]" name="attachment" multiple="multiple">
 						<div id="filedrag">Upload</div>
 					</div>
 					<input type="submit" value="Submit">
