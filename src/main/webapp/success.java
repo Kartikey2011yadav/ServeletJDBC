@@ -10,10 +10,6 @@ import jakarta.servlet.http.Part;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.util.Scanner;
 
 @WebServlet("/success")
 @MultipartConfig(
@@ -35,27 +31,20 @@ public class success extends HttpServlet {
             part.write("/run/media/darth-kartikey/Drive/ServeletJDBC/src/main/temp/" + fileName);
         }
         PrintWriter out =  resp.getWriter();
-        out.println("<script type='text/javascript'>");
-        out.println("window.alert('User or password incorrect');");
-        out.println("location='index.html';");
-        out.println("</script>");
-
-        try
-        {
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdvJava", "root", "Kartikey2011");
-            Statement stat = conn.createStatement();
-            stat.executeUpdate("CREATE TABLE IF NOT EXISTS Student_Record(id int AUTO_INCREMENT,name VARCHAR(30),email VARCHAR(30),interest VARCHAR(25),doc MEDIUMBLOB)");
-
-            stat.executeUpdate("INSERT INTO Student_Record(name,email,interest) VALUES('"+name+"','"+email+"','"+interest+"');");
-            System.out.println("Record Inserted");
-        }
-        catch(Exception e)
-        {
-            System.out.println("Error :"+e);
-        }
 
         System.out.println(name+" "+email+" "+interest);
+
+        Insert data = new Insert(name,email,interest);
+        docInsert doc = new docInsert(fileName);
+
+        if (!data.uploadData()) System.out.println("Couldn't upload data...");
+        else if (!doc.uploadDoc()) System.out.println("unable to upload doc...");
+        else {
+            out.println("<script type='text/javascript'>");
+            out.println("window.alert('Student Record Inserted Successfully....');");
+            out.println("location='index.html';");
+            out.println("</script>");
+        }
 
     }
     @Override
