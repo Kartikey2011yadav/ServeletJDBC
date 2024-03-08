@@ -1,6 +1,5 @@
 package main.webapp;
 
-import com.sun.net.httpserver.HttpServer;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,7 +10,10 @@ import jakarta.servlet.http.Part;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.Scanner;
 
 @WebServlet("/success")
 @MultipartConfig(
@@ -24,7 +26,7 @@ public class success extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("Name");
         String email = req.getParameter("Email");
-        String tech = req.getParameter("tech");
+        String interest = req.getParameter("tech");
 
         Part filePart = req.getPart("attachment");
         String fileName = filePart.getSubmittedFileName();
@@ -38,7 +40,22 @@ public class success extends HttpServlet {
         out.println("location='index.html';");
         out.println("</script>");
 
-        System.out.println(name+" "+email+" "+tech);
+        try
+        {
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdvJava", "root", "Kartikey2011");
+            Statement stat = conn.createStatement();
+            stat.executeUpdate("CREATE TABLE IF NOT EXISTS Student_Record(id int AUTO_INCREMENT,name VARCHAR(30),email VARCHAR(30),interest VARCHAR(25),doc MEDIUMBLOB)");
+
+            stat.executeUpdate("INSERT INTO Student_Record(name,email,interest) VALUES('"+name+"','"+email+"','"+interest+"');");
+            System.out.println("Record Inserted");
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error :"+e);
+        }
+
+        System.out.println(name+" "+email+" "+interest);
 
     }
     @Override
