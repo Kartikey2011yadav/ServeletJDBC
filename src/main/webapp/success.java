@@ -33,12 +33,13 @@ public class success extends HttpServlet {
             part.write("/run/media/darth-kartikey/Drive/ServeletJDBC/src/main/temp/" + fileName);
         }
         PrintWriter out =  resp.getWriter();
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert('User or password incorrect');");
+        out.println("<script type='text/javascript'>");
+        out.println("window.alert('User or password incorrect');");
+        out.println("location='index.html';");
         out.println("</script>");
-        resp.sendRedirect("index.html");
 
         System.out.println(name+" "+email+" "+tech);
+
     }
     @Override
     protected void doPost(HttpServletRequest request,
