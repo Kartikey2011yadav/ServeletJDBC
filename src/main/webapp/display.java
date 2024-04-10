@@ -1,20 +1,15 @@
 package main.webapp;
 
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
-
 import static java.util.jar.Attributes.Name.CONTENT_TYPE;
-
 @WebServlet("/display.html")
-
 public class display extends HttpServlet {
     Connection conn=null;
     public display() {
@@ -28,39 +23,21 @@ public class display extends HttpServlet {
             System.out.println("Exception:"+e.getMessage());
         }
     }
-
-    public void destroy()
-    {
-        try
-        {
-            conn.close();
-        }
-        catch ( Exception e )
-        {
-            System.out.println("Exception:"+e.getMessage());
-            System.err.println( "connection closed" );
-        }
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Statement statement = null;
         ResultSet rs = null;
-
         try
         {
             statement = conn.createStatement();
             rs = statement.executeQuery( "SELECT * FROM Student_Record" );
         }
-
         catch ( Exception e )
         {
             e.printStackTrace();
             System.err.println( "no data" );
         }
-
         resp.setContentType(String.valueOf(CONTENT_TYPE));
-
         try
         {
             PrintWriter out = resp.getWriter();
@@ -69,23 +46,16 @@ public class display extends HttpServlet {
 
             conn.close();
         }
-
         catch ( Exception e )
         {
             e.printStackTrace();
             System.err.println( "can not display table" );
         }
     }
-
-
-
     private void showTable( ResultSet rs, PrintWriter out, String uri ) throws
             Exception
     {
-
-
         boolean hasNext = false;
-
         out.println( "<html lang=\"en\">\n" +
                 "<head>\n" +
                 "\n" +
@@ -121,10 +91,7 @@ public class display extends HttpServlet {
                 "            <tbody>" );
 
         ResultSetMetaData rsmd = rs.getMetaData();
-
-
         StringBuffer sb = new StringBuffer( "<tr>" );
-
         out.println( sb.toString() );
         while ( rs.next() )
         {
@@ -158,10 +125,7 @@ public class display extends HttpServlet {
                 "\n" +
                 "</body>\n" +
                 "</html>" );
-
-
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet( req, resp );
