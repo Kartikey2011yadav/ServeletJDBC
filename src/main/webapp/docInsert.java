@@ -29,7 +29,7 @@ public class docInsert {
             String query="UPDATE Student_Record SET doc=? WHERE id=?;";
             PreparedStatement stat= conn.prepareStatement(query);
 
-            File file = new File("/run/media/darth-kartikey/Drive/ServeletJDBC/src/main/temp/"+path);
+            File file = new File("/run/media/darth-kartikey/Drive/servletJDBC/src/main/temp/"+path);
             FileInputStream filestream=new FileInputStream(file);
 
             stat.setBinaryStream(1,filestream,filestream.available());

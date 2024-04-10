@@ -9,9 +9,8 @@ import jakarta.servlet.annotation.WebServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("hello")
 
-public class temp extends GenericServlet {
+public class hello extends GenericServlet {
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
         PrintWriter p = servletResponse.getWriter();

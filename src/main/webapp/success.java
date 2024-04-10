@@ -28,7 +28,7 @@ public class success extends HttpServlet {
         String fileName = filePart.getSubmittedFileName();
 
         for (Part part : req.getParts()) {
-            part.write("/run/media/darth-kartikey/Drive/ServeletJDBC/src/main/temp/" + fileName);
+            part.write("/run/media/darth-kartikey/Drive/servletJDBC/src/main/temp/" + fileName);
         }
         PrintWriter out =  resp.getWriter();
 
