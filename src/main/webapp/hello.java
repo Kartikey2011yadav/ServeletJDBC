@@ -1,6 +1,5 @@
 package main.webapp;
 
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,6 +13,6 @@ public class hello extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter p = resp.getWriter();
-        p.println("hello");
+        p.println("hello this is servlet And JDBC Connectivity Example");
     }
 }
