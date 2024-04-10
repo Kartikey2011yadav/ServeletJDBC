@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -23,17 +22,13 @@ public class success extends HttpServlet {
         String name = req.getParameter("Name");
         String email = req.getParameter("Email");
         String interest = req.getParameter("tech");
-
         Part filePart = req.getPart("attachment");
         String fileName = filePart.getSubmittedFileName();
-
         for (Part part : req.getParts()) {
             part.write("/run/media/darth-kartikey/Drive/servletJDBC/src/main/temp/" + fileName);
         }
         PrintWriter out =  resp.getWriter();
-
         System.out.println(name+" "+email+" "+interest);
-
         Insert data = new Insert(name,email,interest);
         docInsert doc = new docInsert(fileName);
 
@@ -45,7 +40,6 @@ public class success extends HttpServlet {
             out.println("location='index.html';");
             out.println("</script>");
         }
-
     }
     @Override
     protected void doPost(HttpServletRequest request,
