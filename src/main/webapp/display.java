@@ -139,7 +139,7 @@ public class display extends HttpServlet {
             sb.append("<td>").append(name).append("</td>");
             sb.append("<td>").append(email).append("</td>");
             sb.append("<td>").append(interest).append("</td>");
-            sb.append("<td>").append(interest).append("</td>");
+            sb.append("<td><a href='/servletJDBC/docView.jsp?id=").append(id).append("'>").append("view Doc").append("</a></td>");
 
             sb.append( "</tr>" );
             out.println( sb.toString() );
